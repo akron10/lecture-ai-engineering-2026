@@ -82,24 +82,6 @@ def get_lecture_summary(lecture: int) -> str:
     return path.read_text(encoding="utf-8")
 
 
-<<<<<<< HEAD
-def make_quiz(lecture: int) -> str:
-    """指定した回の用語から1つを選び、確認問題と答えを返す。
-    「第2回の確認問題を出して」のように、復習用の問題を求められたときに使う。
-    """
-    terms = [entry for entry in load_glossary() if entry["lecture"] == lecture]
-    if not terms:
-        return f"第{lecture}回の用語は用語集にありません。"
-
-    term = random.choice(terms)
-    return json.dumps(
-        {
-            "question": f"「{term['term']}」の意味は？",
-            "answer": term["definition"],
-        },
-        ensure_ascii=False,
-    )
-=======
 def search_materials(query: str) -> str:
     """第1〜3回の本講義資料を検索し、関連ページの本文・タイトル・ページ番号を返す。
 
@@ -145,4 +127,3 @@ def search_graph(query: str) -> str:
         return json.dumps({"error": str(e)}, ensure_ascii=False)
     except APIError as e:
         return json.dumps({"error": api_error_message(e.code)}, ensure_ascii=False)
->>>>>>> 03d0fd36d58ada1ac1366c0d485ac103ef44ca52
